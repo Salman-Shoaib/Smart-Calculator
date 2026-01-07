@@ -50,13 +50,13 @@ git clone https://github.com/Salman-Shoaib/Smart-Calculator.git
 ### 2️. Compile the Program
 
 ```bash
-g++ -o SmartCalculator PF-Cal.cpp
+g++ PF-Cal.cpp -o a.exe
 ```
 
 ### 3️. Run the Program
 
 ```bash
-./SmartCalculator
+./a.exe
 ```
 
 ---
