@@ -2,6 +2,8 @@
 #include <fstream>
 #include <cmath>
 #include <string>
+#include <iomanip>
+#include <sstream>
 using namespace std;
 
 // Factorial Function
@@ -42,12 +44,27 @@ void saveCalcHistory(string text) {
 void showCalcHistory() {
     ifstream file("calc_history.txt");
     string line;
+    bool found = false;
 
     cout << "\n--- Calculator History ---\n";
+
     while (getline(file, line)) {
         cout << line << endl;
+        found = true;
     }
+
+    if (!found) {
+        cout << "No record found.\n";
+    }
+
     file.close();
+}
+
+ // Helper Function
+string format(double value) {
+    ostringstream out;
+    out << fixed << setprecision(2) << value;
+    return out.str();
 }
 
 // SGPA Calculator
@@ -90,11 +107,19 @@ void gpaCalculator() {
 void showGPAHistory() {
     ifstream file("gpa_history.txt");
     string line;
+    bool found = false;
 
     cout << "\n--- GPA History ---\n";
+
     while (getline(file, line)) {
         cout << line << endl;
+        found = true;
     }
+
+    if (!found) {
+        cout << "No record found.\n";
+    }
+
     file.close();
 }
 
@@ -129,58 +154,60 @@ int main() {
                     case 1:
                         cin >> n1 >> n2;
                         result = calculate(n1, n2, '+');
-                        history = "Add: " + to_string(result);
+                        history = "Add: " + format(result);
                         break;
 
                     case 2:
                         cin >> n1 >> n2;
                         result = calculate(n1, n2, '-');
-                        history = "Subtract: " + to_string(result);
+                        history = "Subtract: " + format(result);
                         break;
 
                     case 3:
                         cin >> n1 >> n2;
                         result = calculate(n1, n2, '*');
-                        history = "Multiply: " + to_string(result);
+                        history = "Multiply: " + format(result);
                         break;
 
                     case 4:
                         cin >> n1 >> n2;
                         result = calculate(n1, n2, '/');
-                        history = "Divide: " + to_string(result);
+                        history = "Divide: " + format(result);
                         break;
 
                     case 5:
                         int x;
                         cin >> x;
                         result = factorial(x);
-                        history = "Factorial: " + to_string(result);
+                        history = "Factorial of " + format(x) + " = " + format(result);
                         break;
+
 
                     case 6:
                         cin >> n1;
                         if (n1 < 0) throw "Negative square root not allowed";
                         result = sqrt(n1);
-                        history = "Square Root: " + to_string(result);
+                        history = "Square Root of " + format(n1) + " = " + format(result);
                         break;
 
                     case 7:
                         cin >> n1;
                         result = n1 * n1;
-                        history = "Square: " + to_string(result);
+                        history = "Square of " + format(n1) + " = " + format(result);
                         break;
+
 
                     case 8:
                         cin >> n1 >> n2;
                         result = calculate(n1, n2, '^');
-                        history = "Power: " + to_string(result);
+                        history = "Power: " + format(result);
                         break;
 
                     default:
                         throw "Invalid calculator option";
                 }
 
-                cout << "Result: " << result << endl;
+                cout << "Result: " << fixed << setprecision(2)<< result << endl;
                 saveCalcHistory(history);
             }
 
