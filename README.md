@@ -132,7 +132,7 @@ The program safely handles:
 
 ## Author
 
-**Salman Shoaib**
+**Salman Shoaib** <br>
 Lahore, Pakistan
 
 GitHub: [https://github.com/Salman-Shoaib]
