@@ -78,7 +78,7 @@ void gpaCalculator() {
 
     for (int i = 1; i <= courses; i++) {
         cout << "\nCourse " << i << endl;
-        cout << "Enter grade points (e.g. 4.0, 3.5): ";
+        cout << "Enter grade points (e.g. 4.0, 3.67): ";
         cin >> gradePoint;
         cout << "Enter credit hours: ";
         cin >> creditHour;
